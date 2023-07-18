@@ -1,4 +1,4 @@
-pyaudio
+git+https://people.csail.mit.edu/hubert/git/pyaudio.git
 SpeechRecognition
 torch
 git+https://github.com/openai/whisper.git
