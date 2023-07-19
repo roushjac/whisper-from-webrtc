@@ -2,3 +2,5 @@ pyaudio
 SpeechRecognition
 torch
 git+https://github.com/openai/whisper.git
+discord.py[voice]
+python-dotenv
