@@ -20,4 +20,4 @@ RUN apt-get update && \
 
 # EXPOSE 5000
 
-# CMD ["python3", "transcribe_demo.py"]
+# CMD ["python3", "transcribe.py"]
