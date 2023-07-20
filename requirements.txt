@@ -1,6 +1,0 @@
-pyaudio
-SpeechRecognition
-torch
-openai-whisper
-discord.py[voice]
-python-dotenv
