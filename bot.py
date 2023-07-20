@@ -1,26 +1,22 @@
+import os
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
 
-bot = commands.Bot(command_prefix='!')
+load_dotenv("./.env")
+
+intents = discord.Intents.default()
+intents.members = True
+bot = commands.Bot(command_prefix='!WhisperBot', intents=intents)
 
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
 
-@bot.command()
-async def join(ctx):
-    if ctx.author.voice is None:
-        await ctx.send("You're not in a voice channel!")
-        return
-
-    voice_channel = ctx.author.voice.channel
-    if ctx.voice_client is None:
-        await voice_channel.connect()
-    else:
-        await ctx.voice_client.move_to(voice_channel)
-
-    # Enable receiving voice data
-    ctx.voice_client.receive_enabled = True
+@bot.event
+async def on_message(message):
+    channel = message.author.voice.channel
+    await channel.connect()
 
 @bot.command()
 async def leave(ctx):
@@ -31,6 +27,8 @@ async def leave(ctx):
 
 @bot.event
 async def on_voice_receive(user, voice_data):
+    print(type(voice_data))
+    print(dir(voice_data))
     print(f"Received voice data from {user.name}")
 
-bot.run('your-bot-token')
+bot.run(os.environ["BOT_TOKEN"])
