@@ -1,25 +1,13 @@
-FROM pytorch/pytorch
+FROM node:latest
 
-# removes any manual inputs from installations
-ENV DEBIAN_FRONTEND noninteractive
+WORKDIR /usr/src/bot
 
-# set a directory for the app
-WORKDIR /usr/src/app
+COPY package*.json ./
 
-# copy all the files to the container
+RUN npm install
+
 COPY . .
-
-# install dependencies
-RUN apt-get update 
-RUN apt-get install -y build-essential
-RUN apt-get install -y --no-install-recommends apt-utils
-RUN apt-get install -y software-properties-common
-RUN apt-get install -y ffmpeg
-RUN apt-get install -y portaudio19-dev
-RUN apt-get install -y python3-pyaudio
-
-RUN pip install --no-cache-dir -r requirements.txt
 
 # EXPOSE 5000
 
-# CMD ["python3", "transcribe.py"]
+# CMD [ "node", "index.js" ]
