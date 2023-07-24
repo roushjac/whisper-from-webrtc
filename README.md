@@ -1,6 +1,6 @@
-# Discord Real Time Whisper Transcription
+# Real Time Whisper Transcription
 
-This is a Discord bot using OpenAI's [Whisper](https://github.com/openai/whisper) speech to text model. It transcribes the speech of all users in a channel.
+This is a WebRTC client listening for audio and passing it to a local version of OpenAI's [Whisper](https://github.com/openai/whisper) speech to text model. 
 
 To install with Docker run
 ```
