@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # copy .gitconfig to root since Docker user is root
-COPY .gitconfig /root/
+# COPY .gitconfig /root/
 
 # install dependencies
 RUN apt-get update 
@@ -20,6 +20,7 @@ RUN apt-get install -y software-properties-common
 RUN apt-get install -y ffmpeg
 RUN apt-get install -y portaudio19-dev
 RUN apt-get install -y python3-pyaudio
+RUN apt-get install -y git
 
 RUN pip install --no-cache-dir -r requirements.txt
 
