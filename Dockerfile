@@ -9,6 +9,9 @@ WORKDIR /usr/src/app
 # copy all the files to the container
 COPY . .
 
+# copy .gitconfig to root since Docker user is root
+COPY .gitconfig /root/
+
 # install dependencies
 RUN apt-get update 
 RUN apt-get install -y build-essential
@@ -20,6 +23,6 @@ RUN apt-get install -y python3-pyaudio
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# EXPOSE 5000
+EXPOSE 8080
 
 # CMD ["python3", "transcribe.py"]
